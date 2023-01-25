@@ -4,7 +4,7 @@
 <!--The head tag describes our html page-->
 
 <head>
-    <title>App Name: A Coding Challenge</title>
+    <title>Mortgage Loan Calculator: A Coding Challenge</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
@@ -30,12 +30,13 @@
     <header>
         <nav class="navbar navbar-expand-lg" id="mainNav">
             <div class="container-fluid">
-                <a class="navbar-brand fs-1" href="/index.html"><img src="/img/For Web/svg/Black logo - no background.svg"
-                        height="100" />
-                    App Name
+                <a class="navbar-brand fs-1" href="/index.html"><img
+                        src="/img/For Web/svg/Black logo - no background.svg" height="100" />
+                    Mortgage Loan Calculator
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon-acb">
                         <i class="bi bi-list"></i>
                     </span>
@@ -68,9 +69,71 @@
     </header>
 
     <main class="content container">
-        <h1>APP UI GOES HERE</h1>
-        <input id="message" placeholder="Enter a Message..." type="text">
-        <button class="btn btn-primary" type="button" id="btnSubmit">Display a Message</button>
+        <h1>Loan Calculator</h1>
+        <div class="row">
+            <div class="col-12 col-md-4">
+                <div class="col">
+                    <label for="loanAmount">Loan Amount:</label>
+                </div>
+                <div class="col">
+                    <input id="loanAmount" placeholder="Enter loan amount..." type="number" name="loanAmount">
+                </div>
+                <div class="col">
+                    <label for="termLength">Term (months):</label>
+                </div>
+                <div class="col">
+                    <input id="termLength" placeholder="Enter term (months)" type="number" name="termLength">
+                </div>
+                <div class="col">
+                    <label for="interestRate">Interest Rate:</label>
+                </div>
+                <div class="col">
+                    <input id="interestRate" placeholder="Enter interest rate" type="number" name="interestRate">
+                </div>
+                <button class="btn btn-primary m-3" type="button" id="btnSubmit"
+                    onclick="createPaymentSchedule()">Calculate!</button>
+            </div>
+
+            <div class="col-12 col-md-8">
+                <div class="row">
+                    <h1 class="text-center">Your Monthly Payments</h1>
+                    <div id="yourMonthlyPaymentResults"></div>
+                </div>
+
+                <div class="row m-3">
+                    <div class="results col">Total Principal</div>
+                    <div id="totalPrincipalResults" class="col"></div>
+                </div>
+                <div class="row m-3">
+                    <div class="results col">Total Interest</div>
+                    <div id="totalInterestResults"></div>
+                </div>
+                <div class="row m-3">
+                    <div class="results col">Total Cost</div>
+                    <div id="totalCostResults"></div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="table-resonsive">
+                <table class="table table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Month</th>
+                            <th>Payment</th>
+                            <th>Principal</th>
+                            <th>Interest</th>
+                            <th>Total Interest</th>
+                            <th>Balance</th>
+                        </tr>
+                    </thead>
+                    <tbody id="outputTableBody">
+                        <!-- table template goes here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </main>
 
     <footer class="container-fluid py-1">
@@ -92,8 +155,16 @@
         </div>
     </footer>
 
-
-
+    <template id="outputTableRowTemplate">
+        <tr>
+            <td data-id="month"></td>
+            <td data-id="payment"></td>
+            <td data-id="principal"></td>
+            <td data-id="interest"></td>
+            <td data-id="totalInterest"></td>
+            <td data-id="Balance" id="balanceResults"></td>
+        </tr>
+    </template>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
@@ -104,10 +175,6 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script src="/js/site.js"></script>
-    <script>
-        document.getElementById('btnSubmit').addEventListener("click", displayMessage);
-    </script>
 </body>
-
 
 </html>

@@ -1,0 +1,7 @@
+getValues
+
+calculateTotalMonthlyPayments
+
+displayValues
+
+formatAsCurrency
